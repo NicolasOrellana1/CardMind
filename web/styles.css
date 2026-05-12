@@ -1,0 +1,355 @@
+:root {
+  color-scheme: dark;
+  --bg: #101312;
+  --panel: #181d1b;
+  --panel-2: #202723;
+  --felt: #106044;
+  --felt-dark: #0a3f31;
+  --line: rgba(255, 255, 255, 0.12);
+  --text: #f2f6ef;
+  --muted: #a7b5ad;
+  --gold: #f1c56a;
+  --red: #dd5a62;
+  --ink: #141414;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 25% 15%, rgba(241, 197, 106, 0.18), transparent 24rem),
+    linear-gradient(140deg, #101312 0%, #17211d 48%, #121414 100%);
+  color: var(--text);
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  background: var(--gold);
+  color: #1b1609;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+  box-shadow: none;
+}
+
+button.ghost {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+.app {
+  width: min(1180px, calc(100% - 32px));
+  min-height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 20px;
+  align-items: center;
+  padding: 32px 0;
+}
+
+.table,
+.coach-panel {
+  border: 1px solid var(--line);
+  background: rgba(24, 29, 27, 0.88);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(14px);
+}
+
+.table {
+  border-radius: 8px;
+  padding: 22px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.eyebrow,
+.label {
+  margin: 0;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-size: 0.76rem;
+  letter-spacing: 0;
+  font-weight: 800;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+h1 {
+  margin-top: 4px;
+  font-size: clamp(1.8rem, 4vw, 3.15rem);
+  line-height: 1.02;
+}
+
+.status-pill {
+  min-width: 132px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 9px 12px;
+  text-align: center;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.score-grid article {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 13px;
+}
+
+.score-grid span,
+dt,
+.small {
+  color: var(--muted);
+}
+
+.score-grid strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 1.5rem;
+}
+
+.felt {
+  position: relative;
+  overflow: hidden;
+  min-height: 470px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  padding: 26px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 22%),
+    radial-gradient(ellipse at center, var(--felt) 0%, var(--felt-dark) 76%);
+}
+
+.felt::before {
+  content: "";
+  position: absolute;
+  inset: 42px;
+  border: 2px solid rgba(241, 197, 106, 0.32);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hand-row {
+  position: relative;
+  z-index: 1;
+  min-height: 142px;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  min-height: 96px;
+}
+
+.card {
+  width: 64px;
+  aspect-ratio: 5 / 7;
+  border-radius: 8px;
+  background: #f7f2e8;
+  color: var(--ink);
+  padding: 8px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  font-weight: 900;
+  box-shadow: 0 12px 18px rgba(0, 0, 0, 0.28);
+}
+
+.card.red {
+  color: #ba2531;
+}
+
+.card.back {
+  background:
+    linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25% 50%, rgba(255, 255, 255, 0.15) 50% 75%, transparent 75%),
+    #263c78;
+  background-size: 14px 14px;
+}
+
+.pip {
+  place-self: center;
+  font-size: 1.55rem;
+}
+
+.corner.bottom {
+  justify-self: end;
+  transform: rotate(180deg);
+}
+
+.hand-total {
+  min-width: 58px;
+  border-radius: 8px;
+  padding: 11px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.26);
+  border: 1px solid var(--line);
+  font-size: 1.35rem;
+  font-weight: 900;
+}
+
+.center-line {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 106px;
+}
+
+.message {
+  max-width: 560px;
+  border-radius: 8px;
+  padding: 13px 16px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  text-align: center;
+  color: #e7eee9;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.coach {
+  display: grid;
+  gap: 14px;
+}
+
+.coach-panel {
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.coach-panel.primary {
+  background: linear-gradient(145deg, rgba(241, 197, 106, 0.18), rgba(32, 39, 35, 0.94));
+}
+
+.coach-panel h2 {
+  margin-top: 6px;
+  font-size: 2.3rem;
+}
+
+.coach-panel p {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+dl {
+  margin: 12px 0 0;
+}
+
+dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+dd {
+  margin: 0;
+  font-weight: 800;
+}
+
+.count-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.count-strip span,
+.count-strip strong {
+  min-height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+}
+
+.count-strip strong {
+  background: rgba(241, 197, 106, 0.14);
+}
+
+@media (max-width: 900px) {
+  .app {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .score-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .app {
+    width: min(100% - 20px, 1180px);
+    padding: 10px 0;
+  }
+
+  .table {
+    padding: 14px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .felt {
+    min-height: 430px;
+    padding: 18px;
+  }
+
+  .card {
+    width: 54px;
+  }
+
+  .controls button {
+    flex: 1 1 128px;
+  }
+}
+

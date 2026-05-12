@@ -1,0 +1,11 @@
+[project]
+name = "cardmind"
+version = "0.1.0"
+description = "Blackjack engine, card counting trainer, and decision advisor foundation."
+requires-python = ">=3.11"
+authors = [{ name = "CardMind" }]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+

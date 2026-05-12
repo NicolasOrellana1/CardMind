@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CardMind Trainer</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="table" aria-label="Blackjack trainer">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">CardMind Phase 1</p>
+            <h1>Blackjack decision trainer</h1>
+          </div>
+          <div class="status-pill" id="shoeStatus">Six-deck shoe</div>
+        </header>
+
+        <section class="score-grid" aria-label="Session statistics">
+          <article>
+            <span>Running count</span>
+            <strong id="runningCount">0</strong>
+          </article>
+          <article>
+            <span>True count</span>
+            <strong id="trueCount">0.0</strong>
+          </article>
+          <article>
+            <span>Suggested bet</span>
+            <strong id="betUnits">1u</strong>
+          </article>
+          <article>
+            <span>Bankroll</span>
+            <strong id="bankroll">100u</strong>
+          </article>
+        </section>
+
+        <section class="felt">
+          <div class="hand-row">
+            <div>
+              <p class="label">Dealer</p>
+              <div class="cards" id="dealerCards"></div>
+            </div>
+            <div class="hand-total" id="dealerTotal">?</div>
+          </div>
+
+          <div class="center-line">
+            <div class="message" id="message">New shoe ready. Deal a hand to begin.</div>
+          </div>
+
+          <div class="hand-row">
+            <div>
+              <p class="label">Player</p>
+              <div class="cards" id="playerCards"></div>
+            </div>
+            <div class="hand-total" id="playerTotal">0</div>
+          </div>
+        </section>
+
+        <section class="controls" aria-label="Game controls">
+          <button id="dealBtn">Deal</button>
+          <button id="hitBtn">Hit</button>
+          <button id="standBtn">Stand</button>
+          <button id="doubleBtn">Double</button>
+          <button id="resetBtn" class="ghost">Reset shoe</button>
+        </section>
+      </section>
+
+      <aside class="coach" aria-label="Decision coaching">
+        <section class="coach-panel primary">
+          <p class="eyebrow">Advisor</p>
+          <h2 id="adviceAction">Ready</h2>
+          <p id="adviceReason">The advisor uses basic strategy plus early count deviations.</p>
+        </section>
+
+        <section class="coach-panel">
+          <h3>Current hand</h3>
+          <dl>
+            <div>
+              <dt>Player total</dt>
+              <dd id="summaryPlayer">-</dd>
+            </div>
+            <div>
+              <dt>Dealer upcard</dt>
+              <dd id="summaryDealer">-</dd>
+            </div>
+            <div>
+              <dt>Cards left</dt>
+              <dd id="cardsLeft">312</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="coach-panel">
+          <h3>Count practice</h3>
+          <div class="count-strip">
+            <span>2-6</span>
+            <strong>+1</strong>
+            <span>7-9</span>
+            <strong>0</strong>
+            <span>10-A</span>
+            <strong>-1</strong>
+          </div>
+          <p class="small">Keep the running count mentally, then compare it to the live value after each card.</p>
+        </section>
+      </aside>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>
+
